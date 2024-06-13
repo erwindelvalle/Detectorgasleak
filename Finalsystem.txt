@@ -1,0 +1,49 @@
+import java.util.Random;
+
+public class GasLeakDetector {
+    private boolean isGasLeakDetected;
+
+    public GasLeakDetector() {
+        this.isGasLeakDetected = false;
+    }
+
+    // Simulate gas detection process
+    public void detectGas() {
+        Random random = new Random();
+        int randomValue = random.nextInt(100); // Random value between 0 and 99
+
+        // If random value is less than 10, simulate gas leak detected
+        if (randomValue < 10) {
+            isGasLeakDetected = true;
+            System.out.println("Gas leak detected!");
+            System.out.println("Turn off your gas");
+            System.exit(0); // Stop the code execution
+        } else {
+            isGasLeakDetected = false;
+            System.out.println("No gas leak detected.");
+           
+        }
+    }
+
+    // Check if gas leak is detected
+    public boolean isGasLeakDetected() {
+        return isGasLeakDetected;
+    }
+
+    public static void main(String[] args) {
+        GasLeakDetector detector = new GasLeakDetector();
+
+        // Simulate gas detection process for 10 iterations
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Detection " + i + ":");
+            detector.detectGas();
+            System.out.println();
+            try {
+                Thread.sleep(1000); // Wait for 1 second between detections
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Everything is normal");
+    }
+}
